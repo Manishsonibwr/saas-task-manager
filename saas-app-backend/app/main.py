@@ -8,12 +8,17 @@ from app.api.v1.tasks import router as task_router
 from app.api.v1.billing import router as billing_router
 from app.api.deps import get_current_user
 from app.models.user import User
+# later you'll add your Vercel URL here
+origins = [
+    "http://localhost:5173",
+    "https://your-frontend-domain.vercel.app",
+]
 
 app = FastAPI(title="SaaS Task Manager API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
