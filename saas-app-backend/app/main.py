@@ -11,19 +11,19 @@ from app.models.user import User
 # later you'll add your Vercel URL here
 origins = [
     "http://localhost:5173",
-    "https://your-frontend-domain.vercel.app",
+    "https://saas-task-manager-4.onrender.com",
 ]
 
 app = FastAPI(title="SaaS Task Manager API")
 
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],        # allow all origins (OK for dev)
+    allow_credentials=False,    # we use Authorization header, not cookies
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 @app.get("/health")
 def health_check():
