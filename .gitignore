@@ -1,0 +1,24 @@
+# Python / backend
+venv/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+.alembic
+
+# Node / frontend
+node_modules/
+dist/
+*.log
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Frontend env
+saas-app-frontend/.env
+saas-app-frontend/.env.local
