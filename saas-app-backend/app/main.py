@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.db.session import init_db  # 👈 import this
 from app.api.v1.auth import router as auth_router
 from app.api.v1.workspaces import router as workspace_router
 from app.api.v1.projects import router as project_router
@@ -24,6 +24,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")
+def on_startup():
+    # Auto-create tables in the current DATABASE_URL
+    init_db()
 
 @app.get("/health")
 def health_check():
